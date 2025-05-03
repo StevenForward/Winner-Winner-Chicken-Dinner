@@ -45,16 +45,7 @@ export default function Navbar() {
           </div>
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
-
-          <li className="dropdown">
-          <li><a>Hair Types ▾</a></li>
-            <ul className="dropdown-menu">
-              <li><Link to="/HairTypes">Curly</Link></li>
-              <li><Link to="/HairTypes">Coily</Link></li>
-              <li><Link to="/HairTypes">Straight</Link></li>
-              <li><Link to="/HairTypes">Wavy</Link></li>
-            </ul>
-          </li>
+          <li><Link to="/HairTypes">Hair Types</Link></li>
           <li><Link to="/Products">Products</Link></li>
           <li><Link to="/Contact">Contact</Link></li>
           <li><a href="#">Login</a></li>

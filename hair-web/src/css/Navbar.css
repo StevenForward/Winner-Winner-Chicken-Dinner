@@ -12,7 +12,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position:sticky;
+    position:fixed;
+    width: 100%;
+    height: 120px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     top: 0;
     z-index: 1000;
   }
@@ -20,13 +23,16 @@
   /* Logo */
  
   .logo-img {
+    top: 20px;
     cursor: pointer;
+    position: absolute;
     height: 100px;
-    width: 105x;
-
+    width: 200px;
   }
-  .logo:hover {
+
+  .logo-img:hover {
     transform: scale(1.05);
+    transition: transform 0.5s ease;
   }
   
   /* Hamburger wrapper */
@@ -69,8 +75,10 @@
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    
+    gap: 50px;
     align-items: center;
+    font-size: 1.5rem;
   }
   
   .nav-links a {
