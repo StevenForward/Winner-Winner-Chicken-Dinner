@@ -1,17 +1,32 @@
-import { useState } from 'react';
-import '../css/Navbar.css';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../css/Navbar.css';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate(); // ✅ Correct placement
+  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  // Add scroll listener for box shadow
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleClose = () => {
+    setMenuOpen(false);
+    navigate('/');
+  };
 
   return (
-    <header className="hair-header">
+    <header className={`hair-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="logo">KuRoots</div>
 
-      {/* Hamburger + X button wrapper */}
-      <div className="hamburger-wrapper">
+      <div className="hamburger-area">
         {!menuOpen ? (
           <div className="hamburger" onClick={() => setMenuOpen(true)}>
             <div className="bar"></div>
@@ -19,20 +34,11 @@ export default function Navbar() {
             <div className="bar"></div>
           </div>
         ) : (
-          <></>
+          <div className="close-btn" onClick={handleClose}>✕</div>
         )}
       </div>
 
       <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-            <div
-                className="close-btn"
-                onClick={() => {
-                setMenuOpen(false);
-                navigate('/');
-                }}
-            >
-                ✕
-          </div>
         <ul className="nav-links">
           <li><a href="#">Home</a></li>
           <li className="dropdown">
