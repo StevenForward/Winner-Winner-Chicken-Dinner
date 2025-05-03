@@ -1,0 +1,40 @@
+
+.woman1-section {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically (if there's height) */
+    height: 100vh;           /* optional: makes the section full height of viewport */
+  }
+
+.woman1-img {
+    max-width: 100%;        
+    height: auto;
+}
+
+  .hero-container {
+    width: 100%;
+    height:80%;
+    margin-top: 0px; /* if you want it snug under the header */
+  }
+  
+  .hero-image {
+    background-image: url('../images/woman1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 90vh; /* adjust based on your design */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-text {
+    background-color: rgba(255, 255, 255, 0.7); /* semi-transparent box */
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: green; /* or another accent color */
+    font-family: 'Playfair Display', serif;
+  }
