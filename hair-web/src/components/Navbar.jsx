@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png'; 
 import { Link } from 'react-router-dom';
+import '../css/Navbar.css'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
