@@ -1,27 +1,16 @@
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import Navbar from "./components/Navbar"
-import Login from './components/Login';
-import Register from './components/Register';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if (user) {
-    console.log("User is logged", user.email);
-
-  } else {
-    console.log("Penis")
-  }
-
   return (
-    <>
-      <Navbar/>
-
-      <Login />
-      <Register />
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<h1 style={{ padding: '30px' }}>Home Page</h1>} />
+        {/* Add more routes here */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
