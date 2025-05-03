@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   /* Header container */
   .hair-header {
     background: linear-gradient(to right, #f4c2c2, #eab0d9);
@@ -18,14 +18,13 @@
   }
   
   /* Logo */
-  .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    font-family: 'Playfair Display', serif;
-    transition: transform 0.3s;
+ 
+  .logo-img {
+    cursor: pointer;
+    height: 100px;
+    width: 105x;
+
   }
-  
   .logo:hover {
     transform: scale(1.05);
   }
