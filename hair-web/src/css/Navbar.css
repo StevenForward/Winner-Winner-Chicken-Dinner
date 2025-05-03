@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
+    position:sticky;
     top: 0;
     z-index: 1000;
   }
@@ -98,6 +98,7 @@
   /* Dropdown */
   .dropdown {
     position: relative;
+
   }
   
   .dropdown-menu {

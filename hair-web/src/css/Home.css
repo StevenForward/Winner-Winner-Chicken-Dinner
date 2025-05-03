@@ -18,9 +18,12 @@
   }
   
   .hero-image {
+    background-image: url('../images/woman1.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 80vh; /* adjust based on your design */
+    height: 120vh; /* adjust based on your design */
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

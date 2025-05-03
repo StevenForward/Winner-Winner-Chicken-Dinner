@@ -11,10 +11,9 @@ function Home() {
       <div className="hero-container">
         <div
           className="hero-image"
-          style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div className="hero-text">
-            KuRoots
+            Kura Roots
           </div>
         </div>
       </div>
