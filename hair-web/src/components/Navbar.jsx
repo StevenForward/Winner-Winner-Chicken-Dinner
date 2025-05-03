@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import '../css/Navbar.css';
 import { useNavigate } from 'react-router-dom';
+import logo from '../images/logo.png'; // ✅ import the logo
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate(); // ✅ Correct placement
+  const navigate = useNavigate();
 
   return (
+    //logo:
     <header className="hair-header">
-      <div className="logo">KuRoots</div>
+      <div className="logo">
+        <img
+          src={logo}
+          alt="KuRoots Logo"
+          className="logo-img"
+          onClick={() => navigate('/')}
+        />
+      </div>
 
       {/* Hamburger + X button wrapper */}
       <div className="hamburger-wrapper">
@@ -59,5 +68,6 @@ export default function Navbar() {
         </ul>
       </nav>
     </header>
+    
   );
 }
