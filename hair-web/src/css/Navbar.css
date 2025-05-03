@@ -114,10 +114,12 @@
   }
   
   .dropdown-menu li {
+    list-style: none;
     padding: 10px 15px;
   }
   
   .dropdown-menu li a {
+    list-style: none;
     color: #333;
   }
   
