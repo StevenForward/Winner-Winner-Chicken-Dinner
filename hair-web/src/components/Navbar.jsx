@@ -1,22 +1,38 @@
 import { useState } from 'react';
 import '../css/Navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [accountOpen, setAccountOpen] = useState(false);
-
+  const navigate = useNavigate(); // ✅ Correct placement
 
   return (
     <header className="hair-header">
-      <div className="logo">Glow Hair</div>
+      <div className="logo">KuRoots</div>
 
-      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-        <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
-        <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
-        <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
+      {/* Hamburger + X button wrapper */}
+      <div className="hamburger-wrapper">
+        {!menuOpen ? (
+          <div className="hamburger" onClick={() => setMenuOpen(true)}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
 
       <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+            <div
+                className="close-btn"
+                onClick={() => {
+                setMenuOpen(false);
+                navigate('/');
+                }}
+            >
+                ✕
+          </div>
         <ul className="nav-links">
           <li><a href="#">Home</a></li>
           <li className="dropdown">
@@ -33,25 +49,14 @@ export default function Navbar() {
           <li><a href="#">Contact</a></li>
           <li><a href="#">Login</a></li>
           <li className="dropdown">
-        <a
-         href="#"
-        onClick={(e) => {
-        e.preventDefault();
-        setAccountOpen((prev) => !prev); // Toggle Account dropdown
-        }}
-        >
-    Account ▾
-  </a>
-  <ul className={`dropdown-menu ${accountOpen ? 'show' : ''}`}>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Settings</a></li>
-    <li><a href="#">Logout</a></li>
-  </ul>
-</li>
-
-          
+            <a href="#">Account ▾</a>
+            <ul className="dropdown-menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
         </ul>
-        
       </nav>
     </header>
   );

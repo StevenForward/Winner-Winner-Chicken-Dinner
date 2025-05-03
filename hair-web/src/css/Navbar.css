@@ -1,12 +1,14 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
+  /* Header container */
   .hair-header {
     background: linear-gradient(to right, #f4c2c2, #eab0d9);
-    padding: 60px 30px;
+    padding: 20px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,6 +17,7 @@
     z-index: 1000;
   }
   
+  /* Logo */
   .logo {
     font-size: 2rem;
     font-weight: bold;
@@ -27,6 +30,12 @@
     transform: scale(1.05);
   }
   
+  /* Hamburger wrapper */
+  .hamburger-area {
+    position: relative;
+  }
+  
+  /* Hamburger icon */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -41,17 +50,20 @@
     transition: all 0.3s ease;
   }
   
-  .bar.open:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .bar.open:nth-child(2) {
-    opacity: 0;
-  }
-  .bar.open:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  /* Close X button */
+  .close-btn {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    display: none;
   }
   
+  /* Menu container */
   .nav-menu {
+    display: flex;
+  }
+  
+  .nav-menu.active {
     display: flex;
   }
   
@@ -59,6 +71,7 @@
     list-style: none;
     display: flex;
     gap: 25px;
+    align-items: center;
   }
   
   .nav-links a {
@@ -82,13 +95,10 @@
   .nav-links a:hover::after {
     width: 100%;
   }
-  .dropdown-menu {
-    display: none;
-    /* ...other styles */
-  }
   
-  .dropdown-menu.show {
-    display: block;
+  /* Dropdown */
+  .dropdown {
+    position: relative;
   }
   
   .dropdown-menu {
@@ -100,15 +110,14 @@
     padding: 10px 0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999;
   }
   
   .dropdown-menu li {
-    list-style: none;
     padding: 10px 15px;
   }
   
   .dropdown-menu li a {
-    list-style: none;
     color: #333;
   }
   
@@ -116,20 +125,29 @@
     display: block;
   }
   
+  /* Mobile styles */
   @media (max-width: 768px) {
     .hamburger {
       display: flex;
+    }
+  
+    .close-btn {
+      display: block;
+      position: absolute;
+      top:2vw;
+      right: 1vw;
+      z-index: 1001;
     }
   
     .nav-menu {
       position: absolute;
       top: 70px;
       left: 0;
-      background: #eab0d9;
+      background: #b9539a;
       width: 100%;
       flex-direction: column;
       align-items: center;
-      padding: 20px 0;
+      padding: 20px 20px;
       gap: 15px;
       display: none;
     }
@@ -151,10 +169,11 @@
     }
   
     .dropdown:hover .dropdown-menu {
-      display: none;
+      display: block;
     }
   
     .dropdown > .dropdown-menu {
-      display: block;
+      display: none;
     }
   }
+  
