@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import '../css/Navbar.css';
 import { useNavigate } from 'react-router-dom';
-import logo from '../images/logo.png'; // ✅ import the logo
+import logo from '../images/logo.png'; 
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,22 +44,23 @@ export default function Navbar() {
                 ✕
           </div>
         <ul className="nav-links">
-          <li><a href="#">Home</a></li>
+          <li><Link to="/">Home</Link></li>
+
           <li className="dropdown">
-            <a href="#">Hair Types ▾</a>
+          <li><a>Hair Types ▾</a></li>
             <ul className="dropdown-menu">
-              <li><a href="#">Curly</a></li>
-              <li><a href="#">Coily</a></li>
-              <li><a href="#">Straight</a></li>
-              <li><a href="#">Wavy</a></li>
+              <li><Link to="/HairTypes">Curly</Link></li>
+              <li><Link to="/HairTypes">Coily</Link></li>
+              <li><Link to="/HairTypes">Straight</Link></li>
+              <li><Link to="/HairTypes">Wavy</Link></li>
             </ul>
           </li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">Tips</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><Link to="/Products">Products</Link></li>
+          <li><Link to="/Contact">Contact</Link></li>
           <li><a href="#">Login</a></li>
+          <li><Link to="/Cart">Cart</Link></li>
           <li className="dropdown">
-            <a href="#">Account ▾</a>
+            <a>Account ▾</a>
             <ul className="dropdown-menu">
               <li><a href="#">Profile</a></li>
               <li><a href="#">Settings</a></li>
