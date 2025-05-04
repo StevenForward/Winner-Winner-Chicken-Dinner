@@ -1,5 +1,6 @@
 // Register.js (Frontend)
 import React, { useState } from 'react';
+import "../css/SignUpPage.css"; // Reuse the same CSS as LoginPage
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -38,37 +39,30 @@ function Register() {
 
   return (
     <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+      <form onSubmit={handleSubmit} className="signup-form">
           <input
             type="text"
+            placeholder="Name ✏️"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
           <input
             type="email"
-            id="email"
+            placeholder="Email ✉️"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
           <input
             type="password"
-            id="password"
+            placeholder="Password 🔒"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
-        </div>
-        <button type="submit">Register</button>
-      </form>
+          <button type="submit">Sign Up</button>
+        </form>
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}

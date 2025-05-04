@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../contexts/UserContext';
+import '../css/LoginPage.css'
 
 function Login() {
   const [emailInput, setEmailInput] = useState('');
@@ -37,26 +38,23 @@ function Login() {
   };
 
   return (
-    <div className="login-page">
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={passwordInput}
-          onChange={(e) => setPasswordInput(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="signup-form">
+      <input
+        type="email"
+        placeholder="Email ✉️"
+        value={emailInput}
+        onChange={(e) => setEmailInput(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password 🔒"
+        value={passwordInput}
+        onChange={(e) => setPasswordInput(e.target.value)}
+        required
+      />
+      <button type="submit">Sign Up</button>
+    </form>
   );
 }
 
