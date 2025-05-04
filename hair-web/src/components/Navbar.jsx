@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import '../css/Navbar.css';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png'; 
 import { Link } from 'react-router-dom';
+import '../css/Navbar.css'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,8 +20,7 @@ export default function Navbar() {
         />
       </div>
 
-      {/* Hamburger + X button wrapper */}
-      <div className="hamburger-wrapper">
+      <div className="hamburger-area">
         {!menuOpen ? (
           <div className="hamburger" onClick={() => setMenuOpen(true)}>
             <div className="bar"></div>
@@ -29,20 +28,11 @@ export default function Navbar() {
             <div className="bar"></div>
           </div>
         ) : (
-          <></>
+          <div className="close-btn" onClick={handleClose}>✕</div>
         )}
       </div>
 
       <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-            <div
-                className="close-btn"
-                onClick={() => {
-                setMenuOpen(false);
-                navigate('/');
-                }}
-            >
-                ✕
-          </div>
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/HairTypes">Hair Types</Link></li>
