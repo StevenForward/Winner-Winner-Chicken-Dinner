@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/LoginPage.css"; // make sure this file exists!
+import Login from "../components/Login";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,23 +18,8 @@ export default function LoginPage() {
     <div className="login-page-container">
       <div className="login-card">
         <h2>Welcome Back</h2>
-        <form onSubmit={handleSubmit} className="login-form">
-          <input
-            type="email"
-            placeholder="Email ✉️"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password 🔒"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit">Login</button>
-        </form>
+        <Login />
+        
         <p className="signup-text">
           Don’t have an account?{" "}
           <Link to="/SignUp" className="signup-link">

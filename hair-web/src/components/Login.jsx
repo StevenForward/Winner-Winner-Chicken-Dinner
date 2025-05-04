@@ -1,64 +1,60 @@
-import React, { useState } from 'react';
-import { useUserContext } from '../contexts/UserContext';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../css/Login.css"
+import { useUserContext } from '../contexts/UserContext';
+import '../css/LoginPage.css'
 
 function Login() {
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const {user, addUser, removeUser} = useUserContext();
+  const { addUser } = useUserContext(); // get addUser from context
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Send login data to the backend
     try {
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({
+          email: emailInput,
+          password: passwordInput,
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Save the JWT token (e.g., store it in localStorage or state)
-        localStorage.setItem('token', data.token);
-        addUser("User")
-        navigate('/')
+        addUser(data.token, data.email); // ✅ Save both token and email in context
+        alert('Login successful!');
+        navigate('/YourStore');
       } else {
-        setErrorMessage(data.message);
+        alert(data.message || 'Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);
-      setErrorMessage('An error occurred. Please try again later.');
+      alert('Server error');
     }
   };
 
   return (
-    <div className="login-container">
-      <h2 className='login-title'>Login</h2>
-      <form className='login-form' onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          className='login-input'
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          className='login-input'
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className='login-btn' type="submit">Login</button>
-      </form>
-      {errorMessage && <p>{errorMessage}</p>}
-    </div>
+    <form onSubmit={handleSubmit} className="signup-form">
+      <input
+        type="email"
+        placeholder="Email ✉️"
+        value={emailInput}
+        onChange={(e) => setEmailInput(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password 🔒"
+        value={passwordInput}
+        onChange={(e) => setPasswordInput(e.target.value)}
+        required
+      />
+      <button type="submit">Sign Up</button>
+    </form>
   );
 }
 

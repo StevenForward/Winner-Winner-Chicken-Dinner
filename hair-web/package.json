@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.16.0",
     "@react-oauth/google": "^0.12.1",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
