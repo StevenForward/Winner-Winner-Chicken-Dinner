@@ -1,0 +1,34 @@
+.footer {
+    background-color: #14453D; /* deep green or brand color */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    height: 100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-container {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #f4c2c2; /* soft pink hover */
+  }
+  
