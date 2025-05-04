@@ -7,7 +7,7 @@
 
   /* Header container */
   .hair-header {
-    background: linear-gradient(to right, #f4c2c2, #eab0d9);
+    background: linear-gradient(to right, rgb(244, 194, 194), rgb(234, 176, 217));
     padding: 20px 30px;
     display: flex;
     align-items: center;
