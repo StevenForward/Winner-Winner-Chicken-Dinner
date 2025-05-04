@@ -120,20 +120,20 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 999;
   }
-  
+
   .dropdown-menu li {
     list-style: none;
     padding: 10px 15px;
   }
   
   .dropdown-menu li a {
-    list-style: none;
     color: #333;
+    text-decoration: none;
   }
-  
-  .dropdown:hover .dropdown-menu {
+  .dropdown.active .dropdown-menu {
     display: block;
   }
+  
   
   /* Mobile styles */
   @media (max-width: 768px) {

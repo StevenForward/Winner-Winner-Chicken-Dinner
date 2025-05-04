@@ -7,6 +7,7 @@ import { useUserContext } from '../contexts/UserContext';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const handleClose = () => {
     setMenuOpen(false)
@@ -49,8 +50,10 @@ export default function Navbar() {
 
           <li><Link to="/Cart">Cart</Link></li>
 
-          {isUser() && (<li className="dropdown">
-            <a>Account ▾</a>
+          {isUser() && (<li className={`dropdown ${dropdownOpen ? 'active' : ''}`}>
+              <a className="dropdown-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                Account ▾
+              </a>
             <ul className="dropdown-menu">
               <li><Link to="/Profile">Profile</Link></li>
               <li><Link to="/YourStore">Your Store</Link></li>
