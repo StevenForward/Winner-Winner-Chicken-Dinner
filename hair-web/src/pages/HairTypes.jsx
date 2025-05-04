@@ -5,64 +5,64 @@ import '../css/HairTypes.css';
 export default function HairTypes() {
   const hairTypes = [
     {
-      type: "Type 1 – Straight",
-      image: "../img/1a.png", // 🔁 Update with your actual image paths
-      description: "Straight hair has no curl pattern and reflects light well. It can very straight, fine or thin textureget oily quickly."
+      type: "Type 1A – Straight",
+      image: "../img/1a.JPG", // 🔁 Update with your actual image paths
+      description: " Very straight, fine, thin, and soft with no curl or wave"
     },
     {
-      type: "Type 2 – Wavy",
-      image: "../img/type2.jpg",
-      description: "Wavy hair forms a loose S-shape and can range from fine to frizzy."
+      type: "Type 1B – Straight",
+      image: "../img/1b.JPG",
+      description: "Straight but with more volume and slight bends"
     },
     {
-      type: "Type 3 – Curly",
-      image: "../img/type3.jpg",
-      description: "Curly hair has well-defined spirals and tends to be more prone to dryness."
+      type: "Type 1C – Straight",
+      image: "../img/1c.JPG",
+      description: "Straight with body and a few waves, coarse and resistant to curling"
     },
     {
-      type: "Type 4 – Coily/Kinky",
-      image: "../images/type4.jpg",
-      description: "Coily hair forms tight coils or zig-zags, is fragile, and often shrinks significantly."
+      type: "Type 2A – Wavy",
+      image: "../img/2a.png",
+      description: "Loose, fine S-shaped waves with minimal volume"
     },
     {
-      type: "Type 1 – Straight",
-      image: "../images/type1.jpg", // 🔁 Update with your actual image paths
-      description: "Straight hair has no curl pattern and reflects light well. It can get oily quickly."
+      type: "Type 2B – Curly",
+      image: "../img/2b.png", // 🔁 Update with your actual image paths
+      description: "More defined S-waves with slight frizz."
     },
     {
-      type: "Type 2 – Wavy",
-      image: "../images/type2.jpg",
-      description: "Wavy hair forms a loose S-shape and can range from fine to frizzy."
+      type: "Type 2C – Wavy",
+      image: "../img/2c.jpeg",
+      description: "Thicker, coarser waves prone to frizz"
     },
     {
-      type: "Type 3 – Curly",
-      image: "../images/type3.jpg",
-      description: "Curly hair has well-defined spirals and tends to be more prone to dryness."
+      type: "Type 3A – Curly",
+      image: "../img/3a.png",
+      description: "Large, loose curls with a definite S-shape"
     },
     {
-      type: "Type 4 – Coily/Kinky",
-      image: "../images/type4.jpg",
-      description: "Coily hair forms tight coils or zig-zags, is fragile, and often shrinks significantly."
+      type: "Type 3B – Curly",
+      image: "../img/3b.png",
+      description: "Tighter, springier curls with more volume"
     },
     {
-      type: "Type 4 – Coily/Kinky",
-      image: "../images/type4.jpg",
-      description: "Coily hair forms tight coils or zig-zags, is fragile, and often shrinks significantly."
+      type: "Type 3C – Curly",
+      image: "../img/3c.png",
+      description: " Tightly coiled curls with a corkscrew shape"
     },
     {
-      type: "Type 4 – Coily/Kinky",
-      image: "../images/type4.jpg",
-      description: "Coily hair forms tight coils or zig-zags, is fragile, and often shrinks significantly."
+      type: "Type 4A – Coily/Kinky",
+      image: "../img/4a.png",
+      description: "Soft, well-defined S-shaped coils"
     },
     {
-      type: "Type 4 – Coily/Kinky",
-      image: "../images/type4.jpg",
-      description: "Coily hair forms tight coils or zig-zags, is fragile, and often shrinks significantly."
+      type: "Type 4B – Coily/Kinky",
+      image: "../img/4b.png",
+      description: "Z-shaped curls with less definition and more volume."
     },
     {
-      type: "Type 4 – Coily/Kinky",
-      image: "../images/type4.jpg",
-      description: "Coily hair forms tight coils or zig-zags, is fragile, and often shrinks significantly."
+      type: "Type 4C – Coily/Kinky",
+      image: "../img/4c.png",
+      description: "tight Tightest curl pattern with minimal definition and significant shrinkage. coils"
     }
   ];
 
