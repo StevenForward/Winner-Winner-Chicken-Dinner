@@ -4,73 +4,105 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from './models/User.js'; // Import the User model
+import User from './models/User.js';
+import Product from './models/Product.js';
+import productRoutes from './routes/productsRoute.js'; // Handles product upload
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 dotenv.config();
 
 const app = express();
-app.use(cors());  // This allows cross-origin requests from the frontend
+app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// ✅ Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB error:', err));
 
-// Register route (create a new user)
+// ======================
+// 📌 REGISTER ROUTE
+// ======================
 app.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Check if the user already exists (prevent duplicate registration)
     const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    if (existingUser)
       return res.status(400).json({ message: 'User already exists' });
-    }
 
-    // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user instance
     const newUser = new User({ username, email, password: hashedPassword });
 
-    // Save the user to the database
     await newUser.save();
-
-    res.status(201).json({ message: 'User registered successfully' }); // Send a JSON response on success
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' }); // Send a JSON response on error
-  }
-});
-
-// Login route (authenticate user)
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    // Find user by email
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Compare hashed password
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Generate JWT token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-    res.status(200).json({ token, message: 'Login successful' });
-  } catch (err) {
-    console.error(err);
+    console.error('Register error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Use port 5000 for the backend
+// ======================
+// 📌 LOGIN ROUTE
+// ======================
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user)
+      return res.status(400).json({ message: 'Invalid credentials' });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch)
+      return res.status(400).json({ message: 'Invalid credentials' });
+
+    const token = jwt.sign(
+      { userId: user._id, email: user.email }, // Include email for auth
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    res.status(200).json({
+      token,
+      email: user.email,
+      message: 'Login successful'
+    });
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// ======================
+// 📦 PRODUCT ROUTES
+// ======================
+
+// POST /api/products (defined in separate file)
+app.use('/api/products', productRoutes);
+
+// GET /api/my-products
+app.get('/api/my-products', async (req, res) => {
+  const { email } = req.query;
+
+  if (!email)
+    return res.status(400).json({ error: 'Email is required' });
+
+  try {
+    const products = await Product.find({ user: email }); // match user field
+    res.status(200).json(products);
+  } catch (err) {
+    console.error('Error fetching products:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// ======================
+// 🚀 START SERVER
+// ======================
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

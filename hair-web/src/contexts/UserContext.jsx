@@ -1,63 +1,61 @@
-//This file is not a component, but supposed to be the 
-//state manager for our favorite movies
-//We wrapped the APP inside the App.jsx
-
+// UserProvider.jsx
 import { createContext, useState, useContext, useEffect } from "react";
 
-const UserContext = createContext()
+const UserContext = createContext();
 
-export const useUserContext = () => useContext(UserContext)
+export const useUserContext = () => useContext(UserContext);
 
-//Movie Provider will provide a state to any components wrapped inside it
-//We will wrap our entire app inside the MovieProvider, so our entire app has 
-// access to these states defined here
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState('');  // 🔄 store token as string
+  const [email, setEmail] = useState(''); // 🔄 store email as string
 
-//Children is a reserved prompt used to take in any components wrapped inside this component
-export const UserProvider = ({children}) => {
-    const [user, setUser] = useState([])
+  // Load from localStorage on startup
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    const storedEmail = localStorage.getItem("userEmail");
 
-    //Checks once whenever the context is new, if there were
-    //favorite movies stored inside the local storage, and to restore them
-    //Because whenever the page changes, the context is changed meaning all states are
-    //lost
-    useEffect(() => {
-        const storedUser = localStorage.getItem("user")
+    if (storedToken) setUser(storedToken);
+    if (storedEmail) setEmail(storedEmail);
+  }, []);
 
-        if (storedUser) {
-            //Reconverts the string '[1, 2, 3, etc]' back into a list
-            setUser(JSON.parse(storedUser))
-        }
-    }, [])
-
-    //Anytime we add or remove a favorite movie, we will restore the local
-    //storage by converting the favorites list [1, 2, 3, etc] into a string
-    useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user))
-    }, [user])
-
-    const addUser = (user) => {
-        setUser([user])
+  // Save token and email when they change
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("token", user);
+    } else {
+      localStorage.removeItem("token");
     }
+  }, [user]);
 
-    const removeUser = () => {
-        setUser([])
+  useEffect(() => {
+    if (email) {
+      localStorage.setItem("userEmail", email);
+    } else {
+      localStorage.removeItem("userEmail");
     }
+  }, [email]);
 
-    //This function will return true or false if the given movie is in our favorites
-    const isUser = () => {
-        return user.length != 0
-    }
+  // Call on login
+  const addUser = (token, email) => {
+    setUser(token);
+    setEmail(email);
+  };
 
-    const value = {
-        user,
-        addUser,
-        removeUser,
-        isUser
-    }
+  // Call on logout
+  const removeUser = () => {
+    setUser('');
+    setEmail('');
+    localStorage.removeItem("token");
+    localStorage.removeItem("userEmail");
+  };
+  
 
-    //The value={value} makes it so any children has access to the values we made,
-    //which are the favorites functions and the favorite variable itself
-    return <UserContext.Provider value={value}>
-        {children}
+  // Auth check
+  const isUser = () => !!user;
+
+  return (
+    <UserContext.Provider value={{ user, email, addUser, removeUser, isUser}}>
+      {children}
     </UserContext.Provider>
-}
+  );
+};
