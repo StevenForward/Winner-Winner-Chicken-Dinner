@@ -186,4 +186,18 @@
       display: none;
     }
   }
+/* Base styles for mobile */
+.container {
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* Styles for larger screens */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    padding: 20px;
+  }
+}
+
   
