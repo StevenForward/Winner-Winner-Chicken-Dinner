@@ -7,7 +7,9 @@ import '../css/Navbar.css'
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-
+  const handleClose = () => {
+    setMenuOpen(false)
+}
   return (
     //logo:
     <header className="hair-header">

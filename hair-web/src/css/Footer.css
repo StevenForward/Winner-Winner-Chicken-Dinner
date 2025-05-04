@@ -31,4 +31,62 @@
   .footer-links a:hover {
     color: #f4c2c2; /* soft pink hover */
   }
+  /* Extra large devices (large desktops, ≥1200px)*/
+  @media (min-width: 1200px) {
+    /* xl: Large desktop styles here */
+  }
   
+  /* Large devices (desktops, ≥992px)*/
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    /* lg: Desktop styles here */
+  }
+  
+  /* Medium devices (tablets, ≥768px)*/
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    /* md: Tablet styles here */
+  }
+  
+  /* Small devices (landscape phones, ≥576px)*/
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    /* sm: Small devices styles here */
+  }
+  
+  /* Extra small devices (phones, <576px)*/
+  @media (max-width: 575.98px) {
+    /* xs: Extra small phone styles here */
+  }
+  
+  /* iPhone XS Max / 11 Pro Max (6.5" screen, 414x896) */
+  @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+    /* iPhone XS Max / 11 Pro Max */
+  }
+  
+  /* iPhone XR / 11 (6.1" screen, 414x896) */
+  @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+    /* iPhone XR / 11 */
+  }
+  
+  /* iPhone 6+/7+/8+ (5.5" screen, 414x736) */
+  @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    /* iPhone 6+/7+/8+ */
+  }
+  
+  /* iPhone X / XS / 11 Pro (5.8" screen, 375x812) */
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    /* iPhone X / XS / 11 Pro */
+  }
+  
+  /* iPhone 6 / 7 / 8 / SE 2nd & 3rd Gen (4.7" screen, 375x667) */
+  @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* iPhone 6 / 7 / 8 / SE 2nd/3rd Gen */
+  }
+  
+  /* iPhone 5 / 5S / 5C / SE 1st Gen (4" screen, 320x568) */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* iPhone 5 / 5S / 5C / SE 1st Gen */
+  }
+  
+  /* iPhone 4 / 4S (3.5" screen, 320x480) */
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* iPhone 4 / 4S */
+  }

@@ -14,7 +14,6 @@ function Home() {
         <div className="hero-image">
           <div className="title-background">
             <img src={logo} className="title-logo"/>
-            <div className='title-logo-space-holder'></div>
             <button className='title-btn'>
               <p>Start Now →</p>
               </button>
