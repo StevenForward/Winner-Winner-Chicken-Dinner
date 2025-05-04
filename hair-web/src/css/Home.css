@@ -60,7 +60,7 @@
   .title-btn {
     position: absolute;
     bottom: -25px;
-    width: 150px;
+    width: 160px;
     height: 60px;
     z-index: 50;
     border-style: solid;
@@ -72,6 +72,8 @@
     font-weight: bold;
     color: pink;
     cursor: pointer;
+    padding-left: 10px;
+    padding-right: 5px;
   }
 
   .title-btn:hover {
