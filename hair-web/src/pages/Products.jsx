@@ -1,13 +1,23 @@
 import React from 'react';
-import ProductCard from '../components/ProductCard'; // adjust path if needed
+import ProductCard from '../components/ProductCard';
+import '../css/Products.css';
 
 const Products = () => {
   return (
-    <div>
-      <h1>Our Products</h1>
+    <div className="products-container">
       <ProductCard
-        imageUrl="https://live-essnc.s3.amazonaws.com/uploads/2023/11/IMG_0023_1400x.webp"
-        description="Handcrafted ceramic mug with a beautiful glaze finish."
+        imageUrl="https://via.placeholder.com/300"
+        description="This is product 1"
+        uploaderName="Alice"
+      />
+      <ProductCard
+        imageUrl="https://via.placeholder.com/300"
+        description="This is product 2"
+        uploaderName="Bob"
+      />
+      <ProductCard
+        imageUrl="https://via.placeholder.com/300"
+        description="This is product 3"
         uploaderName="Jan"
       />
     </div>
